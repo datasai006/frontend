@@ -1,0 +1,90 @@
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  background-image: url("../../assets//images/car2.jpg"); /* Update with the correct path */
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Set a height to ensure the background image is visible */
+}
+
+.banner-content {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  
+}
+
+.car-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.car-icons,
+.price-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.car-image img {
+  width: 100%;
+  max-width: 300px;
+}
+
+.banner-text {
+  text-align: left;
+}
+
+.banner-text h1 {
+  color: #ff4757;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  color: #2f3542;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.visit-us-btn {
+  background-color: #ff4757;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.visit-us-btn:hover {
+  background-color: #ff6b81;
+}
+
+.address {
+  color: #2f3542;
+  font-size: 1rem;
+  margin-top: 10px;
+}
