@@ -12,14 +12,12 @@
 
 .banner-content {
   display: flex;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 90%;
   max-width: 1200px;
+  justify-content: end;
+  font-family: sans-serif;
   height: 90%;
-  
 }
 
 .car-details {
@@ -87,4 +85,17 @@
   color: #2f3542;
   font-size: 1rem;
   margin-top: 10px;
+}
+.para1 {
+  font-size: 60px;
+  font-weight: 250px;
+  font-family: fangsong;
+  line-break: normal;
+  line-height: normal;
+  border-inline-width: initial;
+}
+.card1 {
+  width: 478px;
+  height: 274px;
+  margin: 0 0 0 250px;
 }
