@@ -1,12 +1,14 @@
 import React from "react";
 import Banner from "../home/banner";
-import Topbrands from "../brands/topbrands";
+import Cars1 from "../../components/Cars1";
+import Footer from "../footer/Footer";
 const home = () => {
   return (
     <div>
       <container>
         <Banner />
-        <Topbrands />
+        <Cars1 />
+       
       </container>
     </div>
   );

@@ -26,7 +26,7 @@ const NAV = () => {
                 Contact
               </Nav.Link>
               <Nav.Link as={Link} to="/dealer-login" className="m-1">
-                Dealer Login
+                Login
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
