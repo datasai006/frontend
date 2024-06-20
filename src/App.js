@@ -9,10 +9,10 @@ import NAV from "./components/header/nav";
 import Home from "./components/home/home";
 import About from "./components/about/about";
 import Contact from "./components/contact/contact";
-import DealerLogin from "./components/delarlogin/delarlogin";
 import CarDetailsPage from "./components/home/CarDetailsPage";
 import Footer from "./components/footer/Footer";
 import Login from "./components/login/SignInSignUp";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
@@ -23,11 +23,11 @@ const App = () => {
   return (
     <div>
       {!noHeaderFooterPaths.includes(location.pathname) && <NAV />}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/dealer-login" element={<DealerLogin />} />
         <Route path="/car/:id" element={<CarDetailsPage />} />
         <Route path="/login" element={<Login />} />
       </Routes>

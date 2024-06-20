@@ -8,8 +8,10 @@ const banner = () => {
         <source src={CarVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="content">
-        <h1 className="text-white">Welcome to the RSNCARS</h1>
+      <div className="content mt-5">
+        <h1 className="text-white ">
+          Welcome to the <span className=" textc">RSNCARS</span>
+        </h1>
         <p className="text-white h2 ">Buy a Car at the Best Price</p>
       </div>
     </div>

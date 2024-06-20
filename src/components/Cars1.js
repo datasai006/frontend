@@ -44,12 +44,12 @@ const Cars1 = () => {
   return (
     <div>
       <div className="text-center ">
-        <h3>SELECT YOUR BRAND</h3>
+        <h3 className="text-warning">SELECT YOUR BRAND</h3>
       </div>
-      <Container className="">
+      <Container>
         <Row className="">
           {carData.map((car) => (
-            <Col key={car.id} lg={3} md={4} sm={6} className="  ">
+            <Col key={car.id} lg={3} md={4} sm={6} className="mt-5  ">
               <Link to={`/car/${car.id}`}>
                 <img
                   className="image_nissan  justify-content-center"

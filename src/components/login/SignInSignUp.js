@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../login/SignInSignUp.css";
+import { Container } from "react-bootstrap";
 
 const SignInSignUp = () => {
   const [signUpMode, setSignUpMode] = useState(false);
@@ -13,7 +14,7 @@ const SignInSignUp = () => {
   };
 
   return (
-    <div className={`container ${signUpMode ? "sign-up-mode" : ""}`}>
+    <Container className={`container1 ${signUpMode ? "sign-up-mode" : ""}`}>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
@@ -107,7 +108,7 @@ const SignInSignUp = () => {
           />
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

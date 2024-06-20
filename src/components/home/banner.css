@@ -92,3 +92,6 @@
   font-size: 1rem;
   margin-top: 10px;
 }
+.textc {
+  color: hsl(30, 78%, 50%) !important;
+}

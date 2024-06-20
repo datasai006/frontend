@@ -25,7 +25,7 @@ const NAV = () => {
               <Nav.Link as={Link} to="/contact" className="m-1">
                 Contact
               </Nav.Link>
-              <Nav.Link as={Link} to="/dealer-login" className="m-1">
+              <Nav.Link as={Link} to="/login" className="m-1">
                 Login
               </Nav.Link>
             </Nav>
