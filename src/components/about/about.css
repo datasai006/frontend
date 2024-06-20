@@ -1,0 +1,32 @@
+body{
+    background-color: smokewhite;
+}
+.about-page {
+  background-color: #f9f9f9;
+  padding: 20px 0;
+}
+
+.about-page h2 {
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  margin-bottom: 40px;
+  font-size: 1.1em;
+  color: #666;
+}
+
+.about-page .card {
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.about-page .card-title {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.about-page .card-text {
+  font-size: 1.1em;
+  color: #555;
+}

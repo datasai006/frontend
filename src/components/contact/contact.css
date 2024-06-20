@@ -1,0 +1,31 @@
+.contact-page {
+  background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.contact-page h2 {
+  margin-bottom: 20px;
+  color: #00796b;
+  font-size: 2.5em;
+}
+
+.contact-page p {
+  margin-bottom: 40px;
+  font-size: 1.2em;
+  color: #004d40;
+}
+
+.contact-page .form-label {
+  color: #004d40;
+}
+
+.contact-page .btn-primary {
+  background-color: #00796b;
+  border-color: #00796b;
+}
+
+.contact-page .btn-primary:hover {
+  background-color: #004d40;
+  border-color: #004d40;
+}

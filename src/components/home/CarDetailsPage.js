@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { carData } from "../../components/Cars1";
 import { Col, Container, Row } from "react-bootstrap";
-import Footer from "../footer/Footer";
+
 
 const cardetail = [
   {

@@ -11,7 +11,7 @@ const NAV = () => {
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
-            RSNCARS
+            RSN<span className="text-warning">CARS</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">

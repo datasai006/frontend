@@ -9,8 +9,8 @@ const banner = () => {
         Your browser does not support the video tag.
       </video>
       <div className="content">
-        <h1 className="text-primary">Welcome to the RSNCARS</h1>
-        <p className="text-primary h2 ">Buy a Car at the Best Price</p>
+        <h1 className="text-white">Welcome to the RSNCARS</h1>
+        <p className="text-white h2 ">Buy a Car at the Best Price</p>
       </div>
     </div>
   );
