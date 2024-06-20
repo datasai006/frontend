@@ -1,34 +1,33 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { carData } from "../../components/Cars1";
-import { Col, Container, Row } from "react-bootstrap";
-
+import Suziki from "../../assets/images/Suzuki.png";
+import { Card, Col, Container, Row } from "react-bootstrap";
 
 const cardetail = [
   {
-    id: 1,
+    id: "RSN1",
     name: "suziky city",
     car_id: 14,
-    image: "image.png",
+    image: Suziki,
   },
   {
-    id: 2,
+    id: "RSN2",
     name: "honda city",
     car_id: 14,
-    image: "image.png",
+    image: Suziki,
   },
   {
-    id: 3,
+    id: "RSN3",
     name: "honda ",
     car_id: 14,
-    image: "image.png",
+    image: Suziki,
   },
 ];
 
 const CarDetailsPage = () => {
   const { id } = useParams();
 
-  // Find all car details with the same car_id
+ 
   const selectedCarDetails = cardetail.filter(
     (car) => car.car_id === parseInt(id)
   );
@@ -45,13 +44,7 @@ const CarDetailsPage = () => {
     );
   }
 
-  // Extract the names of the related car details
-  const relatedCarNames = selectedCarDetails.map((car) => car.name);
-
-  // Find all cars from carData that match the names of the related car details
-  const relatedCars = carData.filter((car) =>
-    relatedCarNames.includes(car.name)
-  );
+ 
 
   return (
     <>
@@ -61,24 +54,17 @@ const CarDetailsPage = () => {
           <Row>
             {selectedCarDetails.map((car) => (
               <Col key={car.id} lg={3} md={4} sm={6} className="mb-4">
-                <div className="text-center">
-                  <h5>{car.name}</h5>
-                  <img src={car.image} alt="/" style={{ maxWidth: "200px" }} />
-                </div>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </div>
-      <div className="h-100 mt-4">
-        <Container>
-          <Row>
-            {relatedCars.map((car) => (
-              <Col key={car.id} lg={3} md={4} sm={6} className="mb-4">
-                <div className="text-center">
-                  <h4>{car.name}</h4>
-                  <img src={car.image} alt="/" style={{ maxWidth: "200px" }} />
-                </div>
+                <Card>
+                  <div className="text-center">
+                    <h5>{car.id}</h5>
+                    <h5>{car.name}</h5>
+                    <img
+                      src={car.image}
+                      alt="/"
+                      style={{ maxWidth: "200px" }}
+                    />
+                  </div>
+                </Card>
               </Col>
             ))}
           </Row>

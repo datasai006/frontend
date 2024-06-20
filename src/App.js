@@ -13,7 +13,7 @@ import CarDetailsPage from "./components/home/CarDetailsPage";
 import Footer from "./components/footer/Footer";
 import Login from "./components/login/SignInSignUp";
 import ScrollToTop from "./components/ScrollToTop";
-
+import Carddetails from "./components/detail/cardetail";
 const App = () => {
   const location = useLocation();
 
@@ -30,6 +30,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/car/:id" element={<CarDetailsPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cardetail" element={<Carddetails />} />
       </Routes>
       {!noHeaderFooterPaths.includes(location.pathname) && <Footer />}
     </div>
