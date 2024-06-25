@@ -1,24 +1,25 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Suziki from "../../assets/images/Suzuki.png";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import "../home/CarDetailsApp.css";
 
 const cardetail = [
   {
     id: "RSN1",
-    name: "suziky city",
+    name: "Suzuki City",
     car_id: 14,
     image: Suziki,
   },
   {
     id: "RSN2",
-    name: "honda city",
+    name: "Honda City",
     car_id: 14,
     image: Suziki,
   },
   {
     id: "RSN3",
-    name: "honda ",
+    name: "Honda",
     car_id: 14,
     image: Suziki,
   },
@@ -26,8 +27,6 @@ const cardetail = [
 
 const CarDetailsPage = () => {
   const { id } = useParams();
-
- 
   const selectedCarDetails = cardetail.filter(
     (car) => car.car_id === parseInt(id)
   );
@@ -44,33 +43,38 @@ const CarDetailsPage = () => {
     );
   }
 
- 
+  const handleCarClick = (car) => {
+    localStorage.setItem("selectedCar", JSON.stringify(car));
+  };
 
   return (
-    <>
-      <div className="text-center mt-4">
-        <h4>Selected Brand Details</h4>
-        <Container>
-          <Row>
-            {selectedCarDetails.map((car) => (
-              <Col key={car.id} lg={3} md={4} sm={6} className="mb-4">
+    <div className="text-center mt-4">
+      <h4>Selecte a car to get Details</h4>
+      <Container>
+        <Row>
+          {selectedCarDetails.map((car) => (
+            <Col key={car.id} lg={3} md={4} sm={6} className="mb-4">
+              <Link
+                to={`/carlist/${car.id}`}
+                onClick={() => handleCarClick(car)}
+              >
                 <Card>
                   <div className="text-center">
                     <h5>{car.id}</h5>
                     <h5>{car.name}</h5>
                     <img
                       src={car.image}
-                      alt="/"
+                      alt={car.name}
                       style={{ maxWidth: "200px" }}
                     />
                   </div>
                 </Card>
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </div>
-    </>
+              </Link>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </div>
   );
 };
 

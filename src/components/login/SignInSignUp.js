@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../login/SignInSignUp.css";
 import { Container } from "react-bootstrap";
+import { AuthContext } from "../Auth/AuthContext"; // Adjust the path as needed
+import { useNavigate } from "react-router-dom";
 
 const SignInSignUp = () => {
   const [signUpMode, setSignUpMode] = useState(false);
+  const [name, setName] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSignUpClick = () => {
     setSignUpMode(true);
@@ -13,19 +20,91 @@ const SignInSignUp = () => {
     setSignUpMode(false);
   };
 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3001/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mobileNumber,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
+      const data = await response.json();
+      console.log("Login successful:", data); // Debugging line
+      // Assuming login() function updates authentication context
+      login(); // Update with appropriate logic based on your AuthContext
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login error:", error);
+      // Handle error state or feedback to user
+    }
+  };
+
+  const handleSignUp = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3001/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          mobileNumber,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      const data = await response.json();
+      console.log("Registration successful:", data); // Debugging line
+      // Handle successful registration logic here, e.g., navigate to login page
+      setSignUpMode(false); // Switch back to sign-in mode after successful registration
+    } catch (error) {
+      console.error("Registration error:", error);
+      // Handle error state or feedback to user
+    }
+  };
+
   return (
     <Container className={`container1 ${signUpMode ? "sign-up-mode" : ""}`}>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form className="sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input
+                type="text"
+                placeholder="Mobile Number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+                required
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
             <input type="submit" value="Login" className="btn solid" />
             <p className="social-text">Or Sign in with social platforms</p>
@@ -44,19 +123,37 @@ const SignInSignUp = () => {
               </button>
             </div>
           </form>
-          <form action="#" className="sign-up-form">
+          <form className="sign-up-form" onSubmit={handleSignUp}>
             <h2 className="title mt-5">Sign up</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
             <div className="input-field">
-              <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <i className="fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Mobile Number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+                required
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
             <input type="submit" className="btn" value="Sign up" />
             <p className="social-text">Or Sign up with social platforms</p>

@@ -13,7 +13,10 @@ import CarDetailsPage from "./components/home/CarDetailsPage";
 import Footer from "./components/footer/Footer";
 import Login from "./components/login/SignInSignUp";
 import ScrollToTop from "./components/ScrollToTop";
-import Carddetails from "./components/detail/cardetail";
+import CarListPage from "./components/home/CarListPage ";
+import Dashboard from "./components/Dashboard/Dashboard";
+import AuthProvider from "./components/Auth/AuthContext";
+
 const App = () => {
   const location = useLocation();
 
@@ -30,7 +33,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/car/:id" element={<CarDetailsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cardetail" element={<Carddetails />} />
+        <Route path="/carlist/:id" element={<CarListPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       {!noHeaderFooterPaths.includes(location.pathname) && <Footer />}
     </div>
@@ -39,7 +43,9 @@ const App = () => {
 
 const AppWrapper = () => (
   <Router>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </Router>
 );
 

@@ -1,11 +1,13 @@
-// components/header/nav.js
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthContext"; // Adjust the path as needed
 
 const NAV = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -25,9 +27,16 @@ const NAV = () => {
               <Nav.Link as={Link} to="/contact" className="m-1">
                 Contact
               </Nav.Link>
-              <Nav.Link as={Link} to="/login" className="m-1">
-                Login
-              </Nav.Link>
+              {isLoggedIn && (
+                <Nav.Link as={Link} to="/dashboard" className="m-1">
+                  Dashboard
+                </Nav.Link>
+              )}
+              {!isLoggedIn && (
+                <Nav.Link as={Link} to="/login" className="m-1">
+                  Login
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
