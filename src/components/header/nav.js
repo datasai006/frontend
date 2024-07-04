@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Auth/AuthContext"; // Adjust the path as needed
 
 const NAV = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <div>
@@ -27,12 +27,12 @@ const NAV = () => {
               <Nav.Link as={Link} to="/contact" className="m-1">
                 Contact
               </Nav.Link>
-              {isLoggedIn && (
+              {isAuthenticated && (
                 <Nav.Link as={Link} to="/dashboard" className="m-1">
                   Dashboard
                 </Nav.Link>
               )}
-              {!isLoggedIn && (
+              {!isAuthenticated && (
                 <Nav.Link as={Link} to="/login" className="m-1">
                   Login
                 </Nav.Link>

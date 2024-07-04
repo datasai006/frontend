@@ -1,6 +1,6 @@
 import React from "react";
 import "../../src/components/cars1.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import nissan from "../assets/images/Nissan.png";
 import abarth from "../assets/images/abarth.png";
@@ -46,21 +46,23 @@ const Cars1 = () => {
       <div className="text-center ">
         <h3 className="text-warning">SELECT YOUR BRAND</h3>
       </div>
-      <Container>
-        <Row className="">
+      <Container-fluid>
+        <Row className="m-5 p-4">
           {carData.map((car) => (
-            <Col key={car.id} lg={3} md={4} sm={6} className="mt-5  ">
-              <Link to={`/car/${car.id}`}>
-                <img
-                  className="image_nissan  justify-content-center"
-                  alt="/"
-                  src={car.image}
-                />
-              </Link>
-            </Col>
+            <Card>
+              <Col key={car.id} lg={3} md={3} sm={4} xs={6}>
+                <Link to={`/car/${car.id}`}>
+                  <img
+                    className="image_nissan float-center ml-5  justify-content-center"
+                    alt="/"
+                    src={car.image}
+                  />
+                </Link>
+              </Col>
+            </Card>
           ))}
         </Row>
-      </Container>
+      </Container-fluid>
       <Container className="m-0 d-none">
         <Row>
           <h4>Still Updates are going on </h4>

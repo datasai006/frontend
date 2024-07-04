@@ -53,12 +53,12 @@ const CarDetailsPage = () => {
       <Container>
         <Row>
           {selectedCarDetails.map((car) => (
-            <Col key={car.id} lg={3} md={4} sm={6} className="mb-4">
+            <Col key={car.id} lg={3} md={3} sm={4} xs={6} className="ml-5">
               <Link
                 to={`/carlist/${car.id}`}
                 onClick={() => handleCarClick(car)}
               >
-                <Card>
+                <Card className="text-dark ">
                   <div className="text-center">
                     <h5>{car.id}</h5>
                     <h5>{car.name}</h5>

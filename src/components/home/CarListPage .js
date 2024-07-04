@@ -26,7 +26,7 @@ const CarListPage = () => {
       <Row className="justify-content-center">
         <Col lg={6} md={8} sm={10}>
           <Card>
-            <div className="text-center">
+            <div className="text-center text-dark">
               <h6>{selectedCar.id}</h6>
               <h5 className="ven">{selectedCar.name}</h5>
               <img

@@ -16,6 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import CarListPage from "./components/home/CarListPage ";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AuthProvider from "./components/Auth/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute"; // Import the ProtectedRoute component
 
 const App = () => {
   const location = useLocation();
@@ -31,10 +32,14 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/car/:id" element={<CarDetailsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/carlist/:id" element={<CarListPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<ProtectedRoute />}>
+          {" "}
+          {/* Wrap protected routes */}
+          <Route path="/car/:id" element={<CarDetailsPage />} />
+          <Route path="/carlist/:id" element={<CarListPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
       {!noHeaderFooterPaths.includes(location.pathname) && <Footer />}
     </div>

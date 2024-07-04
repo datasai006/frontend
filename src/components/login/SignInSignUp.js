@@ -9,7 +9,7 @@ const SignInSignUp = () => {
   const [name, setName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login, intendedRoute, setIntendedRoute } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
@@ -40,13 +40,12 @@ const SignInSignUp = () => {
       }
 
       const data = await response.json();
-      console.log("Login successful:", data); // Debugging line
-      // Assuming login() function updates authentication context
-      login(); // Update with appropriate logic based on your AuthContext
-      navigate("/dashboard");
+      console.log("Login successful:", data);
+      login();
+      navigate(intendedRoute || "/");
+      setIntendedRoute(null);
     } catch (error) {
       console.error("Login error:", error);
-      // Handle error state or feedback to user
     }
   };
 
@@ -71,12 +70,10 @@ const SignInSignUp = () => {
       }
 
       const data = await response.json();
-      console.log("Registration successful:", data); // Debugging line
-      // Handle successful registration logic here, e.g., navigate to login page
-      setSignUpMode(false); // Switch back to sign-in mode after successful registration
+      console.log("Registration successful:", data);
+      setSignUpMode(false);
     } catch (error) {
       console.error("Registration error:", error);
-      // Handle error state or feedback to user
     }
   };
 

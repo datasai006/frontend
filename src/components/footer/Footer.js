@@ -20,7 +20,9 @@ const Footer = () => {
           </Col>
         </Row>
         <Row className="text-center float-center m-0">
-          <h5>Design by @ R Venkateswarlu Full-Stack-Developer</h5>
+          <h5>
+            Design and Developed by @ R Venkateswarlu Full-Stack-Developer
+          </h5>
         </Row>
       </div>
     </div>
