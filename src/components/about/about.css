@@ -1,5 +1,5 @@
-body{
-    background-color: smokewhite;
+body {
+  background-color: smokewhite;
 }
 .about-page {
   background-color: #f9f9f9;
@@ -18,7 +18,8 @@ body{
 
 .about-page .card {
   border: none;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .about-page .card-title {
@@ -28,5 +29,6 @@ body{
 
 .about-page .card-text {
   font-size: 1.1em;
+
   color: #555;
 }

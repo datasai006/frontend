@@ -41,7 +41,11 @@ const SignInSignUp = () => {
 
       const data = await response.json();
       console.log("Login successful:", data);
-      login();
+      const tokenExpiryTime = Date.now() + data.expiresIn * 10000;
+
+      sessionStorage.setItem("authToken", data.token);
+      sessionStorage.setItem("authTokenExpiry", tokenExpiryTime);
+      login(data.token, tokenExpiryTime);
       navigate(intendedRoute || "/");
       setIntendedRoute(null);
     } catch (error) {

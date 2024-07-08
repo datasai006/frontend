@@ -47,10 +47,17 @@ const Cars1 = () => {
         <h3 className="text-warning">SELECT YOUR BRAND</h3>
       </div>
       <Container-fluid>
-        <Row className="m-5 p-4">
+        <Row className="m-2 p-4 justify-content-center ">
           {carData.map((car) => (
-            <Card>
-              <Col key={car.id} lg={3} md={3} sm={4} xs={6}>
+            <Col
+              key={car.id}
+              lg={3}
+              md={3}
+              sm={4}
+              xs={6}
+              className="text-center m-2"
+            >
+              <Card>
                 <Link to={`/car/${car.id}`}>
                   <img
                     className="image_nissan float-center ml-5  justify-content-center"
@@ -58,8 +65,8 @@ const Cars1 = () => {
                     src={car.image}
                   />
                 </Link>
-              </Col>
-            </Card>
+              </Card>
+            </Col>
           ))}
         </Row>
       </Container-fluid>
