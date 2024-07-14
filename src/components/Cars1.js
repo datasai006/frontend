@@ -20,6 +20,7 @@ import Acura from "../assets/images/Acura.png";
 import Alfarromeo from "../assets/images/alfaromeo.png";
 import Bently from "../assets/images/bentley.png";
 import Buick from "../assets/images/Buick.png";
+import Footer from "./footer/Footer";
 
 export const carData = [
   { id: 1, name: "Abarth", image: abarth },
@@ -75,6 +76,7 @@ const Cars1 = () => {
           <h4>Still Updates are going on </h4>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };

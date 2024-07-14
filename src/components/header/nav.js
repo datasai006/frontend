@@ -9,8 +9,8 @@ const NAV = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
-    <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
+    <div >
+      <Navbar bg="dark" variant="dark" expand="lg" >
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
             RSN<span className="text-warning">CARS</span>

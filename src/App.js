@@ -5,16 +5,14 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import NAV from "./components/header/nav";
 import Home from "./components/home/home";
 import About from "./components/about/about";
 import Contact from "./components/contact/contact";
 import CarDetailsPage from "./components/home/CarDetailsPage";
-import Footer from "./components/footer/Footer";
 import Login from "./components/login/SignInSignUp";
 import ScrollToTop from "./components/ScrollToTop";
 import CarListPage from "./components/home/CarListPage ";
-import Dashboard from "./components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/UserDashboard";
 import AuthProvider from "./components/Auth/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute"; // Import the ProtectedRoute component
 
@@ -26,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      {!noHeaderFooterPaths.includes(location.pathname) && <NAV />}
+      {!noHeaderFooterPaths.includes(location.pathname)}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -41,7 +39,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
-      {!noHeaderFooterPaths.includes(location.pathname) && <Footer />}
+      {!noHeaderFooterPaths.includes(location.pathname)}
     </div>
   );
 };
