@@ -4,7 +4,7 @@ export default class footer1 extends Component {
   render() {
     return (
       <div>
-        <footer className="main-footer">
+        <footer className="main-footer fixed-bottom">
   <strong>
     Copyright © 2014-2021{'{'}" "{'}'}
     <a href="https://adminlte.io">AdminLTE.io</a>.
