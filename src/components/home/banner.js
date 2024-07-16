@@ -26,6 +26,7 @@ import CarVideo from "../../assets/videos/car3.mp4";
 import styled, { keyframes } from "styled-components";
 import NAV from "../header/nav";
 
+
 const fadeIn = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
@@ -63,7 +64,7 @@ const Banner = () => {
           <source src={CarVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="content mt-5">
+        <div className="content mt-5 text-center">
           <h1 className="text-white">
             Welcome to the <span className="textc">RSNCARS</span>
           </h1>
@@ -80,6 +81,7 @@ const Banner = () => {
           </p>
         </div>
       </div>
+    
     </>
   );
 };

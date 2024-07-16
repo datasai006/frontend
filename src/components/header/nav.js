@@ -9,8 +9,8 @@ const NAV = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
-    <div >
-      <Navbar bg="dark" variant="dark" expand="lg" >
+    <div>
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to="/">
             RSN<span className="text-warning">CARS</span>
@@ -25,7 +25,10 @@ const NAV = () => {
                 About Us
               </Nav.Link>
               <Nav.Link as={Link} to="/contact" className="m-1">
-                Contact
+               Contact
+              </Nav.Link>
+              <Nav.Link as={Link} to="/sell" className="m-1">
+                Sell Your Car
               </Nav.Link>
               {isAuthenticated && (
                 <Nav.Link as={Link} to="/dashboard" className="m-1">

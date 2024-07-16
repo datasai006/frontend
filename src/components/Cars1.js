@@ -44,7 +44,7 @@ export const carData = [
 const Cars1 = () => {
   return (
     <div>
-      <div className="text-center ">
+      <div className="text-center  mt-5">
         <h3 className="text-warning">SELECT YOUR BRAND</h3>
       </div>
       <Container-fluid>
@@ -54,14 +54,14 @@ const Cars1 = () => {
               key={car.id}
               lg={3}
               md={3}
-              sm={4}
-              xs={6}
-              className="text-center m-2"
+              sm={12}
+              xs={12}
+              className="text-center"
             >
               <Card>
                 <Link to={`/car/${car.id}`}>
                   <img
-                    className="image_nissan float-center ml-5  justify-content-center"
+                    className="image_nissan float-center ml-2  justify-content-center"
                     alt="/"
                     src={car.image}
                   />

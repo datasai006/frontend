@@ -14,12 +14,12 @@ import ScrollToTop from "./components/ScrollToTop";
 import CarListPage from "./components/home/CarListPage ";
 import Dashboard from "./components/Dashboard/UserDashboard";
 import AuthProvider from "./components/Auth/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute"; // Import the ProtectedRoute component
+import ProtectedRoute from "./components/ProtectedRoute"; 
 
 const App = () => {
   const location = useLocation();
 
-  // Paths that do not require header and footer
+  
   const noHeaderFooterPaths = ["/login"];
 
   return (

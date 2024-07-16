@@ -31,7 +31,7 @@ export default class Sidebar extends Component {
                   </Nav.Link>
                 </div>
               </div>
-            </div>                      
+            </div>
             <nav className="mt-2">
               <ul
                 className="nav nav-pills nav-sidebar flex-column"
@@ -42,14 +42,30 @@ export default class Sidebar extends Component {
                 <li className="nav-item menu-open">
                   <Nav.Link as={Link} to="/dashboard">
                     <i className="nav-icon fas fa-tachometer-alt" />
-                    <p>
-                      Dashboard                      
-                    </p>
+                    <p>Dashboard</p>
+                  </Nav.Link>
+                </li>
+                <li className="nav-item menu-open">
+                  <Nav.Link as={Link} to="/dashboard">
+                    <i className="nav-icon fas fa-tachometer-alt" />
+                    <p>Add-Car</p>
+                  </Nav.Link>
+                </li>
+                <li className="nav-item menu-open">
+                  <Nav.Link as={Link} to="/dashboard">
+                    <i className="nav-icon fas fa-tachometer-alt" />
+                    <p>VIew-Car</p>
+                  </Nav.Link>
+                </li>
+                <li className="nav-item menu-open">
+                  <Nav.Link as={Link} to="/dashboard">
+                    <i className="nav-icon fas fa-tachometer-alt" />
+                    <p>Dashboard</p>
                   </Nav.Link>
                 </li>
               </ul>
-            </nav>            
-          </div>          
+            </nav>
+          </div>
         </aside>
       </>
     );
