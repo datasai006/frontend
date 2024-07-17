@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
                     <li className="breadcrumb-item">
                       <Link to="/home">Home</Link>
                     </li>
-                    <li className="breadcrumb-item active">Dashboard v1</li>
+                    <li className="breadcrumb-item active">Dashboard </li>
                   </ol>
                 </div>
                 {/* /.col */}

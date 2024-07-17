@@ -9,6 +9,7 @@ const SignInSignUp = () => {
   const [name, setName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
   const { login, intendedRoute, setIntendedRoute } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const SignInSignUp = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://192.168.29.47:3001/auth/login", {
+      const response = await fetch(`${apiBaseUrl}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

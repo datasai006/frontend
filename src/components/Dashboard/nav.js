@@ -1,8 +1,14 @@
-import React, { Component } from 'react'
-import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default class nav extends Component {
+export default class NavBar extends Component {
+  handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    localStorage.removeItem("authToken");
+    window.location.href = "/"; 
+  };
+
   render() {
     return (
       <div>
@@ -33,12 +39,6 @@ export default class nav extends Component {
           </ul>
           {/* Right navbar links */}
           <ul className="navbar-nav ml-auto">
-            {/* Navbar Search */}
-
-            {/* Messages Dropdown Menu */}
-
-            {/* Notifications Dropdown Menu */}
-
             <li className="nav-item">
               <Nav.Link
                 className="nav-link"
@@ -50,8 +50,12 @@ export default class nav extends Component {
               </Nav.Link>
             </li>
             <li className="nav-item">
-              <Nav.Link>
-                <i class="fa-solid fa-right-from-bracket"></i>
+              <Nav.Link
+                className="nav-link"
+                onClick={this.handleLogout}
+                role="button"
+              >
+                <i className="fas fa-sign-out-alt"></i>
               </Nav.Link>
             </li>
           </ul>
