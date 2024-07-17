@@ -71,7 +71,7 @@ export default class Sidebar extends Component {
                     isCarsMenuOpen ? "menu-open" : ""
                   }`}
                 >
-                  <a
+                  <Link
                     href="#"
                     className={`nav-link ${isCarsMenuOpen ? "active" : ""}`}
                     onClick={this.toggleCarsMenu}
@@ -81,7 +81,7 @@ export default class Sidebar extends Component {
                       Cars
                       <i className="right fas fa-angle-left" />
                     </p>
-                  </a>
+                  </Link>
                   <ul
                     className={`nav nav-treeview ${
                       isCarsMenuOpen ? "d-block" : "d-none"
