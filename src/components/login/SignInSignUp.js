@@ -20,39 +20,43 @@ const SignInSignUp = () => {
   const handleSignInClick = () => {
     setSignUpMode(false);
   };
+  
+ const handleLogin = async (event) => {
+   event.preventDefault();
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+   try {
+     const response = await fetch(`${apiBaseUrl}/auth/login`, {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         mobileNumber,
+         password,
+       }),
+     });
 
-    try {
-      const response = await fetch(`${apiBaseUrl}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          mobileNumber,
-          password,
-        }),
-      });
+     if (!response.ok) {
+       throw new Error("Login failed");
+     }
 
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
+     const data = await response.json();
+     console.log("Login successful:", data);
 
-      const data = await response.json();
-      console.log("Login successful:", data);
-      const tokenExpiryTime = Date.now() + data.expiresIn * 10000;
+     // Set token expiry time to 5 minutes (300 seconds)
+     const tokenExpiryTime = Date.now() + 300 * 1000; // 5 minutes
+     localStorage.setItem("authToken", data.token);
+     sessionStorage.setItem("authToken", data.token);
+     sessionStorage.setItem("authTokenExpiry", tokenExpiryTime.toString());
 
-      sessionStorage.setItem("authToken", data.token);
-      sessionStorage.setItem("authTokenExpiry", tokenExpiryTime);
-      login(data.token, tokenExpiryTime);
-      navigate(intendedRoute || "/");
-      setIntendedRoute(null);
-    } catch (error) {
-      console.error("Login error:", error);
-    }
-  };
+     login(data.token, tokenExpiryTime);
+     navigate(intendedRoute || "/");
+     setIntendedRoute(null);
+   } catch (error) {
+     console.error("Login error:", error);
+   }
+ };
+
 
   const handleSignUp = async (event) => {
     event.preventDefault();

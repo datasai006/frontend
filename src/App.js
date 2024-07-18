@@ -14,12 +14,12 @@ import ScrollToTop from "./components/ScrollToTop";
 import CarListPage from "./components/home/CarListPage ";
 import Dashboard from "./components/Dashboard/UserDashboard";
 import AuthProvider from "./components/Auth/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute"; 
+import ProtectedRoute from "./components/ProtectedRoute";
+import Sell from "./components/Sellcar/sell";
 
 const App = () => {
   const location = useLocation();
 
-  
   const noHeaderFooterPaths = ["/login"];
 
   return (
@@ -34,6 +34,7 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           {" "}
           {/* Wrap protected routes */}
+          <Route path="/sell" element={<Sell />} />
           <Route path="/car/:id" element={<CarDetailsPage />} />
           <Route path="/carlist/:id" element={<CarListPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
