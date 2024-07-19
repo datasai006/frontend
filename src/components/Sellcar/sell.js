@@ -11,7 +11,15 @@ const SellCarForm = () => {
   const [model, setModel] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [insurance, setInsurance] = useState("");
-  const [carImage, setCarImage] = useState(null);
+  const [price, setPrice] = useState("");
+  const [track, setTrack] = useState("");
+  const [carImages, setCarImages] = useState({
+    front: null,
+    side: null,
+    back: null,
+    left: null,
+    right: null,
+  });
   const [contactNumber, setContactNumber] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const { isAuthenticated } = useContext(AuthContext);
@@ -46,7 +54,11 @@ const SellCarForm = () => {
   }, [isAuthenticated]);
 
   const handleImageChange = (e) => {
-    setCarImage(e.target.files[0]);
+    const { name, files } = e.target;
+    setCarImages((prevImages) => ({
+      ...prevImages,
+      [name]: files[0],
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -57,9 +69,17 @@ const SellCarForm = () => {
       model,
       fuelType,
       insurance,
+      price,
+      track,
       contactNumber,
       ownerName,
-      carImage: carImage ? URL.createObjectURL(carImage) : null,
+      carImages: {
+        front: carImages.front ? URL.createObjectURL(carImages.front) : null,
+        side: carImages.side ? URL.createObjectURL(carImages.side) : null,
+        back: carImages.back ? URL.createObjectURL(carImages.back) : null,
+        left: carImages.left ? URL.createObjectURL(carImages.left) : null,
+        right: carImages.right ? URL.createObjectURL(carImages.right) : null,
+      },
     };
     localStorage.setItem("carData", JSON.stringify(carData));
     alert("Car details saved successfully!");
@@ -71,8 +91,8 @@ const SellCarForm = () => {
       <Container className="mt-4">
         <h2 className="text-center mb-4">Sell Your Car</h2>
         <Form onSubmit={handleSubmit}>
-          <Row>
-            <Col md={6}>
+          <Row className="m-0">
+            <Col md={4}>
               <Form.Group controlId="carName" className="mb-3">
                 <Form.Label>Car Name</Form.Label>
                 <Form.Control
@@ -83,7 +103,7 @@ const SellCarForm = () => {
                 />
               </Form.Group>
             </Col>
-            <Col md={6}>
+            <Col md={4}>
               <Form.Group controlId="brand" className="mb-3">
                 <Form.Label>Brand</Form.Label>
                 <Form.Control
@@ -101,9 +121,7 @@ const SellCarForm = () => {
                 </Form.Control>
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
+            <Col md={4}>
               <Form.Group controlId="model" className="mb-3">
                 <Form.Label>Model</Form.Label>
                 <Form.Control
@@ -114,31 +132,66 @@ const SellCarForm = () => {
                 />
               </Form.Group>
             </Col>
-            <Col md={6}>
+            <Col md={4}>
               <Form.Group controlId="fuelType" className="mb-3">
                 <Form.Label>Fuel Type</Form.Label>
                 <Form.Control
-                  type="text"
+                  as="select"
                   value={fuelType}
                   onChange={(e) => setFuelType(e.target.value)}
+                  required
+                >
+                  <option value="">Select fuel type</option>
+                  <option value="petrol">Petrol</option>
+                  <option value="diesel">Diesel</option>
+                  <option value="cng">CNG</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col md={4}>
+              <Form.Group controlId="insurance" className="mb-3">
+                <Form.Label>Insurance</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={insurance}
+                  onChange={(e) => setInsurance(e.target.value)}
+                  required
+                >
+                  <option value="">Select insurance status</option>
+                  <option value="live">Live</option>
+                  <option value="expire">Expire</option>
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col md={4}>
+              <Form.Group controlId="price" className="mb-3">
+                <Form.Label>Price</Form.Label>
+                <Form.Control
+                  type="number"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
                   required
                 />
               </Form.Group>
             </Col>
           </Row>
-          <Row>
-            <Col md={6}>
-              <Form.Group controlId="insurance" className="mb-3">
-                <Form.Label>Insurance</Form.Label>
+          <Row className="m-0">
+            <Col md={4}>
+              <Form.Group controlId="track" className="mb-3">
+                <Form.Label>Track</Form.Label>
                 <Form.Control
-                  type="text"
-                  value={insurance}
-                  onChange={(e) => setInsurance(e.target.value)}
+                  as="select"
+                  value={track}
+                  onChange={(e) => setTrack(e.target.value)}
                   required
-                />
+                >
+                  <option value="">Select track</option>
+                  <option value="showroom">Showroom</option>
+                  <option value="not-showroom">Not Showroom</option>
+                </Form.Control>
               </Form.Group>
             </Col>
-            <Col md={6}>
+            <Col md={4}>
               <Form.Group controlId="contactNumber" className="mb-3">
                 <Form.Label>Contact Number</Form.Label>
                 <Form.Control
@@ -149,9 +202,7 @@ const SellCarForm = () => {
                 />
               </Form.Group>
             </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
+            <Col md={4}>
               <Form.Group controlId="ownerName" className="mb-3">
                 <Form.Label>Owner Name</Form.Label>
                 <Form.Control
@@ -162,11 +213,58 @@ const SellCarForm = () => {
                 />
               </Form.Group>
             </Col>
-            <Col md={6}>
-              <Form.Group controlId="carImage" className="mb-3">
-                <Form.Label>Car Image</Form.Label>
+            <Col md={4}>
+              <Form.Group controlId="carImageFront" className="mb-3">
+                <Form.Label>Car Image (Front)</Form.Label>
                 <Form.Control
                   type="file"
+                  name="front"
+                  onChange={handleImageChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            {/* <Col md={4}>
+              <Form.Group controlId="carImageSide" className="mb-3">
+                <Form.Label>Car Image (Side)</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="side"
+                  onChange={handleImageChange}
+                  required
+                />
+              </Form.Group>
+            </Col> */}
+            <Col md={4}>
+              <Form.Group controlId="carImageBack" className="mb-3">
+                <Form.Label>Car Image (Back)</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="back"
+                  onChange={handleImageChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+
+            <Col md={4}>
+              <Form.Group controlId="carImageLeft" className="mb-3">
+                <Form.Label>Car Image (Left)</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="left"
+                  onChange={handleImageChange}
+                  required
+                />
+              </Form.Group>
+            </Col>
+            <Col md={{ span: 2, offset: 2 }}></Col>
+            <Col md={4}>
+              <Form.Group controlId="carImageRight" className="mb-3">
+                <Form.Label>Car Image (Right)</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="right"
                   onChange={handleImageChange}
                   required
                 />
