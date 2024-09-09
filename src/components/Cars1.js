@@ -20,7 +20,7 @@ import Acura from "../assets/images/Acura.png";
 import Alfarromeo from "../assets/images/alfaromeo.png";
 import Bently from "../assets/images/bentley.png";
 import Buick from "../assets/images/Buick.png";
-import Footer from "./footer/Footer";
+// import Footer from "./footer/Footer";
 
 export const carData = [
   { id: 1, name: "Abarth", image: abarth },
@@ -47,7 +47,7 @@ const Cars1 = () => {
       <div className="text-center  mt-5">
         <h3 className="text-warning">SELECT YOUR BRAND</h3>
       </div>
-      <Container-fluid>
+      <Container fluid>
         <Row className="m-2 p-4 justify-content-center ">
           {carData.map((car) => (
             <Col
@@ -70,13 +70,13 @@ const Cars1 = () => {
             </Col>
           ))}
         </Row>
-      </Container-fluid>
+      </Container>
       <Container className="m-0 d-none">
         <Row>
           <h4>Still Updates are going on </h4>
         </Row>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

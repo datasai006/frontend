@@ -38,7 +38,7 @@ const CarDetailsPage = () => {
       <div className="h-100">
         <Container className="h-100 ">
           <Row className="text-center float-middle m-5">
-            <h4 className="text-danger">  Car not found </h4>
+            <h4 className="text-danger">Car not found</h4>
           </Row>
         </Container>
       </div>
@@ -47,13 +47,15 @@ const CarDetailsPage = () => {
 
   const handleCarClick = (car) => {
     localStorage.setItem("selectedCar", JSON.stringify(car));
+    // Navigate to CarListPage
+    window.location.href = `/carlist/${car.car_id}`;
   };
 
   return (
     <>
       <NAV />
       <div className="text-center mt-4">
-        <h4>Selecte a car to get Details</h4>
+        <h4>Select a car to get Details</h4>
         <Container>
           <Row className="m-0">
             {selectedCarDetails.map((car) => (
@@ -62,7 +64,7 @@ const CarDetailsPage = () => {
                   to={`/carlist/${car.id}`}
                   onClick={() => handleCarClick(car)}
                 >
-                  <Card className="text-dark ">
+                  <Card className="text-dark">
                     <div className="text-center">
                       <h5>{car.id}</h5>
                       <h5>{car.name}</h5>
@@ -79,7 +81,7 @@ const CarDetailsPage = () => {
           </Row>
         </Container>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

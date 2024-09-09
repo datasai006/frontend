@@ -16,31 +16,31 @@ import Dashboard from "./components/Dashboard/UserDashboard";
 import AuthProvider from "./components/Auth/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Sell from "./components/Sellcar/sell";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const location = useLocation();
 
   const noHeaderFooterPaths = ["/login"];
 
+  const showHeaderFooter = !noHeaderFooterPaths.includes(location.pathname);
+
   return (
     <div>
-      {!noHeaderFooterPaths.includes(location.pathname)}
-      <ScrollToTop />
+      {showHeaderFooter && <ScrollToTop />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/car/:id" element={<CarDetailsPage />} />
         <Route element={<ProtectedRoute />}>
-          {" "}
-          {/* Wrap protected routes */}
           <Route path="/sell" element={<Sell />} />
-          <Route path="/car/:id" element={<CarDetailsPage />} />
           <Route path="/carlist/:id" element={<CarListPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
-      {!noHeaderFooterPaths.includes(location.pathname)}
+      {showHeaderFooter && <Footer />}
     </div>
   );
 };

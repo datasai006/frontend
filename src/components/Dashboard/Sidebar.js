@@ -61,7 +61,7 @@ export default class Sidebar extends Component {
                   </Nav.Link>
                 </li>
                 <li className="nav-item menu-open">
-                  <Nav.Link as={Link} to="/addcar">
+                  <Nav.Link as={Link} to="/sell">
                     <i className="nav-icon fas fa-car" />
                     <p>ADD CAR</p>
                   </Nav.Link>
